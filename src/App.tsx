@@ -1,17 +1,48 @@
-import LargeButton from "./LargeButton";
-import LunchButton from "./LunchButton";
+// import Button from "./Button";
+
+import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+import SNSLogin from "./SNSLogin";
+
+// import {
+//   IoIosCheckmarkCircleOutline,
+//   IoIosInformationCircle,
+//   IoIosWarning,
+// } from "react-icons/io";
+// import Snackbar from "./Snackbar";
 
 function App() {
-  // h1 태그 CSS 색깔은 하늘색, 폰트사이즈 20px
-  // h1 태그 내용: 오늘점심 먹은거
-
   return (
     <div className="App">
-      <LunchButton />
-      <LunchButton />
-
-      <LargeButton />
-      <LargeButton />
+      {/* <Button content="Home" backgroundColor="main" borderRadius="hard" />
+      <Button content="Home" backgroundColor="side" borderRadius="smooth" />
+      <Button content="Home" backgroundColor="deactive" borderRadius="circle" /> */}
+      {/* <Snackbar
+        statusIcon={{ color: "info", Icon: IoIosInformationCircle }}
+        messageText={{ message: "Message" }}
+      />
+      <Snackbar
+        statusIcon={{ color: "check", Icon: IoIosCheckmarkCircleOutline }}
+        messageText={{ message: "Message" }}
+      />
+      <Snackbar
+        statusIcon={{ color: "warning", Icon: IoIosWarning }}
+        messageText={{ message: "Message" }}
+      /> */}
+      <SNSLogin
+        backgroundColor="#1877F2"
+        snsText={{ sns: "Facebook" }}
+        snsIcon={{ Icon: FaFacebook }}
+      />
+      <SNSLogin
+        backgroundColor="black"
+        snsText={{ sns: "Apple" }}
+        snsIcon={{ Icon: FaApple }}
+      />
+      <SNSLogin
+        backgroundColor="white"
+        snsText={{ sns: "Google" }}
+        snsIcon={{ Icon: FaGoogle }}
+      />
     </div>
   );
 }
