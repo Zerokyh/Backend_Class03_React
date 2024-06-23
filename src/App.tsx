@@ -1,9 +1,18 @@
 // import Button from "./Button";
 
-import styled from "styled-components";
-import Reply from "./Reply/Reply";
-import MyReply from "./Reply/MyReply";
-import Top from "./Reply/Top";
+import { ChangeEvent, useState } from "react";
+import FormButton from "./FormButton";
+// import InputForm from "./InputForm";
+import RegisterForm from "./RegisterForm";
+
+// import Mybutton from "./Mybutton";
+
+// import Comment from "./Comment/Comment";
+
+// import styled from "styled-components";
+// import Reply from "./Reply/Reply";
+// import MyReply from "./Reply/MyReply";
+// import Top from "./Reply/Top";
 
 // import Item from "./Musinsa/Item";
 
@@ -28,14 +37,14 @@ function App() {
   //   display: "flex",
   //   gap: "10px",
   // };
-  const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 1000px;
-    width: 100%;
-    background-color: #3b3b3b;
-  `;
+  // const Wrapper = styled.div`
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: 0 auto;
+  //   max-width: 1000px;
+  //   width: 100%;
+  //   background-color: #3b3b3b;
+  // `;
 
   // const arr = [
   //   { backgroundColor: "#E1F5FE", text: "50" },
@@ -49,8 +58,25 @@ function App() {
   //   { backgroundColor: "#0277BD", text: "800" },
   //   { backgroundColor: "#01579B", text: "900" },
   // ];
+  const [signUp, setSignUp] = useState({ id: "", pw: "", pwch: "" });
+
+  const isAllLength =
+    !!signUp.id.length && !!signUp.pw.length && !!signUp.pwch.length;
+  const isAllPassed = signUp.id.includes("@") && signUp.pw === signUp.pwch;
+
+  const handleId = (e: ChangeEvent<HTMLInputElement>) => {
+    setSignUp((v) => ({ ...v, id: e.target.value }));
+  };
+  const handlePw = (e: ChangeEvent<HTMLInputElement>) => {
+    setSignUp((v) => ({ ...v, pw: e.target.value }));
+  };
+  const handlePwch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSignUp((v) => ({ ...v, pwch: e.target.value }));
+  };
+
   return (
-    <Wrapper className="App">
+    <div className="app">
+      {/* <Wrapper className="App"> */}
       {/* <Button content="Home" backgroundColor="main" borderRadius="hard" />
       <Button content="Home" backgroundColor="side" borderRadius="smooth" />
       <Button content="Home" backgroundColor="deactive" borderRadius="circle" /> */}
@@ -107,7 +133,7 @@ function App() {
         itemInfo={{ info: "무신사 스탠다드" }}
         itemPrice={{ price: "20000" }}
       /> */}
-      <Top />
+      {/* <Top />
       <Reply
         profile="Batman.webp"
         nickName={{ nickname: "푸드매니아" }}
@@ -134,7 +160,29 @@ function App() {
       />
 
       <MyReply profile="Batman.webp" />
-    </Wrapper>
+    </Wrapper> */}
+      {/* <Comment /> */}
+      {/* <Mybutton /> */}
+
+      {/* <InputForm /> */}
+
+      <RegisterForm
+        onChange={handleId}
+        guide="아이디"
+        placeholder="사용하시는 이메일을 입력해주세요 (abc@xxxx.com)"
+      />
+      <RegisterForm
+        onChange={handlePw}
+        guide="비밀번호"
+        placeholder="특수문자, 숫자, 영문 3가지 조합으로 8자 이상 15이하로 입력해 주세요"
+      />
+      <RegisterForm
+        onChange={handlePwch}
+        guide="비밀번호 확인"
+        placeholder="동일한 비밀번호를 입력해 주세요"
+      />
+      <FormButton isPass={isAllLength && isAllPassed} />
+    </div>
   );
 }
 
